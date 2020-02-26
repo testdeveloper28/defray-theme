@@ -1,0 +1,97 @@
+<?php $featuredproduct = $block->getFeaturedProducts();  
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$productHelper = $this->helper('Magento\Catalog\Helper\Product');
+	$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+	$list  = count($featuredproduct);
+	$limit = $objectManager->create('Dotsquares\Featuredproducts\Helper\Data')->getConfig('featuredproducts/general/limit');
+	$i = 0;
+	$columcount = 5;
+?>
+	<div class="container">
+		<h2 class="main-heading">
+			<span>Featured <i>Product</i></span>
+		</h2>
+		<div class="jcarousel-wrapper">
+			<div class="feaproduct_list jcarousel">
+				<ul id="brand_slider_feature" class="owl-carousel owl-theme owl-loaded owl-drag">
+					<?php foreach ($featuredproduct as $product){
+						$productObject = $objectManager->create('Magento\Catalog\Model\Product'); 
+						$_product = $productObject->load($product->getId());
+						$imgUrl = '';
+						$imgUrl= $productHelper->getSmallImageUrl($_product); 
+					?>	
+							<li class="item productli <?php echo 'product'.$i; ?>">
+								<a href = "<?php echo $_product->getProductUrl() ?>">
+									<img src="<?php echo $imgUrl ?>" />
+									<p class="products-name"><?php echo $_product->getName() ?></p>
+								</a>
+								<div class="price_label">
+									<?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+									<?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($_product->getPrice(),2),true,false); ?>
+								</div>
+								<div class="product-item-inner">
+									<div class="actions-primary">
+										<?php if ($_product->isSaleable()): ?>
+											<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+											<?php echo $block->getBlockHtml('formkey')?>
+											<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+											$listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
+											$addToCartUrl =  $listBlock->getAddToCartUrl($product); ?>
+											<form data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post"> 
+												<?php echo $block->getBlockHtml('formkey')?>
+												<button type="submit" title="Add to Cart" class="action tocart primary">
+													<span>Add to Cart</span>
+												</button>
+											</form>
+										<?php else: ?>
+										<?php if ($_product->getIsSalable()): ?>
+											<div class="stock available"><span><?php echo __('In stock') ?></span></div>
+										<?php else: ?>
+											<div class="stock unavailable"><span><?php echo __('Out of stock') ?></span></div>
+										<?php endif; ?>
+										<?php endif; ?>
+									</div>
+								</div>
+							</li>
+						<?php 
+					}	?>	
+				</ul>
+			</div>	
+
+		</div>	
+	</div>
+	
+<script>
+require([
+        'jquery',
+        'dotsquares/marketplace',
+    ], function ($) {
+        $("#brand_slider_feature").owlCarousel({
+			loop:true,
+            margin:10,
+			nav: true,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+				400:{
+                    items:2,
+                    nav:true
+                },
+                768:{
+                    items:3,
+                    nav:true
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                    loop:false
+                }
+            }
+        });
+		$( ".owl-prev").html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+        $( ".owl-next").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+    });
+</script>

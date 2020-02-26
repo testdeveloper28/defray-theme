@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dotsquares" translate="label" sortOrder="40">
+            <label><![CDATA[Defray Theme]]></label>
+        </tab>
+		<section id="marketplace_settings" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Header Configuration</label>
+            <tab>dotsquares</tab>
+            <resource>Dotsquares_Marketplace::config_marketplace</resource>
+            <group id="header" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <field id="sticky_header" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sticky Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="header_social" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Social Icon</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="header_social_block" translate="label comment" type="text" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Social Icon static block</label>
+					<validate>required-entry</validate>
+					<depends>
+                        <field id="header_social">1</field>
+                    </depends>
+					<comment>Please enter static block identifier</comment>
+                </field>
+                <field id="header_logo_src" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Image</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG, SVG.</comment>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Headerlogo</backend_model>
+                    <base_url type="media" scope_info="1">marketplace/header_logo</base_url>
+                </field>
+            </group>
+        </section>
+        <section id="marketplace" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Design Configuration</label>
+            <tab>dotsquares</tab>
+            <resource>Dotsquares_Marketplace::config_marketplace</resource>
+            <group id="themeheader" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="theme_color" translate="label comment" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Theme Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                </field>
+            </group>
+			<group id="colors" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Colors</label>
+                <field id="custom" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="basic_heading" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Colors</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="page_bgcolor" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="page_bg_image" translate="label comment" type="image" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Background Image</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG, SVG.</comment>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backgroundimage</backend_model>
+                    <base_url type="media" scope_info="1">marketplace/page_bg</base_url>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="text_color" translate="label comment" type="text" sortOrder="111" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="link_hover_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Hover Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="header_heading" translate="label comment" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="header_top_color" translate="label comment" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Bar Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="header_menu" translate="label comment" type="text" sortOrder="191" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Menu Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="header_menu_background" translate="label comment" type="text" sortOrder="192" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Menu Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="header_menu_hover" translate="label comment" type="text" sortOrder="192" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Menu Hover Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="footer_heading" translate="label comment" sortOrder="193" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="footer_color" translate="label comment" type="text" sortOrder="194" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="footer_background" translate="label comment" type="text" sortOrder="195" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="newsletter_background" translate="label comment" type="text" sortOrder="196" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer Newsletter Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="button_heading" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buttons</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_bg_color" translate="label comment" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_text_color" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Text Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_hover_bg_color" translate="label comment" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Hover Background Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_hover_text_color" translate="label comment" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Hover Text Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="breadcrumbs_heading" translate="label comment" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Breadcrumbs</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="breadcrumbs_color" translate="label comment" type="text" sortOrder="620" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="breadcrumbs_links_color" translate="label comment" type="text" sortOrder="630" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Links Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="breadcrumbs_links_hover_color" translate="label comment" type="text" sortOrder="640" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Links Hover Color</label>
+                    <backend_model>Dotsquares\Marketplace\Model\Config\Backend\Color\Transparent</backend_model>
+                    <frontend_model>Dotsquares\Marketplace\Block\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

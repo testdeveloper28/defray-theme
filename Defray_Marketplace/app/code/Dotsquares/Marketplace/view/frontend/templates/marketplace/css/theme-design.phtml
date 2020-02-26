@@ -1,0 +1,186 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * <?php echo date("Y-m-d H:i:s"); ?>
+ */
+
+<?php #die("testt");
+    $d = $this->getConfig("marketplace",$this->_coreRegistry->registry('cssgen_marketplace'));
+    $_helper = $this->helper('Dotsquares\Marketplace\Helper\Data');
+    #echo '<pre>'; print_r($d) ; die("testt");
+?>
+<?php
+if(isset($d['colors']['custom']) && $d['colors']['custom']==1){
+	if(isset($d['colors']['text_color']) && $d['colors']['text_color']){
+?>
+html, body{ color:<?php if (strlen($d['colors']['text_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['text_color']; ?>}
+.theme_footer ul li:hover, .theme_footer ul li span:hover, .theme_footer ul li a:hover{color:<?php if (strlen($d['colors']['link_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_hover_color']; ?>;}
+<?php
+}
+    if(isset($d['colors']['link_color']) && $d['colors']['link_color']){
+?>
+a, a:focus,.header.links a, .page-header .custom-mincart-content a, .minicart-wrapper .action.showcart .text, .page-header .minicart-wrapper .action.showcart:before, .page-header .minicart-wrapper .action.showcart.active:before{color:<?php if (strlen($d['colors']['link_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_color']; ?>;}
+.block.newsletter{border-bottom:1px solid <?php if (strlen($d['colors']['link_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_color']; ?>;}
+.page-header .block-search .action.search::before, .page-header .minicart-wrapper .action.showcart::before, .product-item-name > a, .product.name a > a{color:<?php if (strlen($d['colors']['link_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_color']; ?>!important;}
+
+<?php
+    }
+if(isset($d['colors']['footer_color']) && $d['colors']['footer_color']){
+?>
+.page-footer h1, .page-footer p, .page-footer span, .theme_footer ul li, .theme_footer ul li span, .theme_footer ul li a {color:<?php if (strlen($d['colors']['footer_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['footer_color']; ?>;}
+<?php
+}
+if(isset($d['colors']['link_hover_color']) && $d['colors']['link_hover_color']){
+?>
+.header.links a:hover,  .page-header .custom-mincart-content a:hover, .minicart-wrapper .action.showcart .text:hover{color:<?php if (strlen($d['colors']['link_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_hover_color']; ?>;}
+.header.socail_icon li:hover,.product-item-name > a:hover, .product.name a > a:hover{color:<?php if (strlen($d['colors']['link_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['link_hover_color']; ?>!important;;}
+<?php
+    }
+    if(isset($d['colors']['breadcrumbs_links_color']) && $d['colors']['breadcrumbs_links_color']){
+?>
+.page-wrapper > .breadcrumbs a, .page-wrapper > .breadcrumbs a:focus{color:<?php if (strlen($d['colors']['breadcrumbs_links_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['breadcrumbs_links_color']; ?>}
+<?php
+    }
+    if(isset($d['colors']['breadcrumbs_links_hover_color']) && $d['colors']['breadcrumbs_links_hover_color']){
+?>
+.page-wrapper > .breadcrumbs a:hover{color:<?php if (strlen($d['colors']['breadcrumbs_links_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['breadcrumbs_links_hover_color']; ?>}
+<?php
+    }
+	if(isset($d['colors']['header_top_color'])) {
+?>
+.page-header .panel.wrapper{background:<?php if (strlen($d['colors']['header_top_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_top_color']; ?> !important;}
+
+<?php
+}
+if(isset($d['themeheader']['theme_color']) && $d['themeheader']['theme_color']) { ?>
+.action.primary, .action.primary:hover, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span, .recent-posts .post-date .month .filter-options-title:hover:after, .modes-mode.active, .modes-mode:hover, .pages strong.page, .pages .action:hover, .pages a.page:hover, button:hover, .action.primary:focus, .action.primary:active, .btn-primary, .btn-default, .cms-index-index blockquote.testimonial, .btn-default:hover,  .products-grid.products.grid.flex-grid .product-item-details .product-item-actions .tocart, .post-holder .post-date .month, .page-header .navigation li.level0.active, .iwd-summary-cart
+    {background-color:<?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;}
+.action.primary, .action.primary:hover, .modes-mode.active, .modes-mode:hover, .pages strong.page, .pages .action:hover, .pages a.page:hover, .fotorama__nav .fotorama__thumb-border, button:hover, .action.primary:focus, .action.primary:active, .products-grid .product-item-info:hover .product-item-details .product-item-actions .tocart, .products-grid.products.grid.flex-grid .product-item-details .product-item-actions .tocart
+    {border-color:<?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;}
+.page-header, .minicart-wrapper .block-minicart, .product.data.items > .item.title.active > .switch, .product.data.items > .item.title.active > .switch:focus, .product.data.items > .item.title.active > .switch:hover, .authentication-dropdown, .login-container, .form.password.reset, .form.send.confirmation, .form.password.forget, .form.create.account, .form.form-edit-account, .form-address-edit, .form-newsletter-manage, .featured-box .box-content, .history .featured-box .box-content, .form.search.advanced, .homepage-grid-banner .ribbon:before, .cms-index-index .testimonial-arrow-down, #newsletter_popup, .iwd-one-page-checkout-sidebar .iwd-opc-block-summary
+    {border-top-color:<?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;}
+.minicart-wrapper .block-minicart:before, .prev-next-products .product-nav .product-pop:before, .iwd-one-page-checkout-sidebar .iwd-opc-block-summary:before
+    {border-bottom-color:<?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;}
+    .navigation, .nav-sections{
+		background-color: <?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;
+    }
+	
+    .page-header .navigation li.level0, .page-header .panel.header .header.links > li > a, .page-header .panel.header .header.links > li > a:hover,.page-header .header.panel .top-panel>.links > li > a, .page-header .header.panel .top-panel>.links > li > a:hover, .page-header .header.panel .links > li > a, .page-header .header.panel .links > li > a:hover, .page-header .header.panel .block-search .action.search:before, .page-header .navigation .level0 > .level-top, .page-header .minicart-wrapper .action.showcart:before, .page-header .minicart-wrapper .action.showcart.active:before, .page-header .search-area > a, .page-header .search-area > a:hover, .page-header .block-search .action.search:before, .page-header .panel.header .header.links > li > a, .page-header .header.panel .block-search .action.search:before{
+        color: <?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;
+    }
+	.nav-sections .navigation li a span, .page-header .navigation li a, .navigation li.shop_brands a{
+		color: <?php if (strlen($d['colors']['header_menu']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_menu']; ?>!important;
+	}
+	.nav-sections .navigation li.level0.has-active a span:hover, .page-header .navigation li.level0.has-active a:hover, .navigation li.shop_brands a:hover, .navigation li.level0:hover a.ui-state-focus span{
+		color: <?php if (strlen($d['colors']['header_menu_hover']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_menu_hover']; ?>!important;
+	}
+    .page-header .navigation li.level0:hover, .page-header .navigation .level0:hover > .level-top, .page-header .navigation .level0:hover > .level-top, .page-header .navigation .level0.active > .level-top, .page-header .navigation .level0.has-active > .level-top, .page-header .navigation .level0.active > .level-top{
+        background-color: <?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;
+    }
+    .product.info.detailed.vertical .product.data.items > .item.title.active > .switch, .product.info.detailed.vertical .product.data.items > .item.title.active > .switch:focus, .product.info.detailed.vertical .product.data.items > .item.title.active > .switch:hover {
+        border-left-color: <?php if (strlen($d['themeheader']['theme_color']) == 6): echo "#"; endif; ?><?php echo $d['themeheader']['theme_color']; ?>;
+    }
+<?php
+}
+if(isset($d['colors']['header_menu_background']) && $d['colors']['header_menu_background']) {
+?>
+    .navigation, .nav-sections{
+    	background-color: <?php if (strlen($d['colors']['header_menu_background']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_menu_background']; ?>;
+    }
+	.navigation .level0 .submenu{
+        background-color: <?php if (strlen($d['colors']['header_menu_background']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_menu_background']; ?>!important;
+		border-color:<?php if (strlen($d['colors']['header_menu_background']) == 6): echo "#"; endif; ?><?php echo $d['colors']['header_menu_background']; ?>!important; }
+.page-wrapper {
+<?php
+}
+    if(isset($d['colors']['page_bgcolor']) && $d['colors']['page_bgcolor']) {
+?>
+        background-color:<?php if (strlen($d['colors']['page_bgcolor']) == 6): echo "#"; endif; ?><?php echo $d['colors']['page_bgcolor']; ?>;
+<?php
+    }
+    if(isset($d['colors']['page_bg_image']) && $d['colors']['page_bg_image']){
+?>
+        background-image:url(<?php echo $_helper->getBaseMediaUrl()."marketplace/page_bg/".$d['colors']['page_bg_image']; ?>);
+<?php
+    }
+?>
+}
+<?php
+if($d['colors']['page_bgcolor']) {
+?>
+.filterproduct-title .content {
+    background-color:<?php if (strlen($d['colors']['page_bgcolor']) == 6): echo "#"; endif; ?><?php echo $d['colors']['page_bgcolor']; ?>;
+}
+<?php
+}
+?>
+button.action.primary{
+<?php
+    if(isset($d['colors']['button_bg_color']) && $d['colors']['button_bg_color']){
+?>
+    background-color:<?php if (strlen($d['colors']['button_bg_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_bg_color']; ?>;
+    border-color:<?php if (strlen($d['colors']['button_bg_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_bg_color']; ?>;
+<?php
+    }
+    if(isset($d['colors']['button_text_color']) && $d['colors']['button_text_color']){
+?>
+    color:<?php if (strlen($d['colors']['button_text_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_text_color']; ?>
+<?php
+    }
+?>
+}
+button.action.primary:hover{
+<?php
+    if(isset($d['colors']['button_hover_bg_color']) && $d['colors']['button_hover_bg_color']){
+?>
+    background-color:<?php if (strlen($d['colors']['button_hover_bg_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_hover_bg_color']; ?>;
+    border-color:<?php if (strlen($d['colors']['button_hover_bg_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_hover_bg_color']; ?>;
+<?php
+    }
+    if(isset($d['colors']['button_hover_text_color']) && $d['colors']['button_hover_text_color']){
+?>
+    color:<?php if (strlen($d['colors']['button_hover_text_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['button_hover_text_color']; ?>
+<?php
+    }
+?>
+}
+.block.newsletter, .page-footer{
+<?php
+if(isset($d['colors']['footer_background']) && $d['colors']['footer_background']){
+?>
+background:<?php if (strlen($d['colors']['footer_background']) == 6): echo "#"; endif; ?><?php echo $d['colors']['footer_background'];?>
+<?php
+}
+?>
+}
+.block.newsletter{
+<?php
+if(isset($d['colors']['newsletter_background']) && $d['colors']['newsletter_background']){
+?>
+background:<?php if (strlen($d['colors']['newsletter_background']) == 6): echo "#"; endif; ?><?php echo $d['colors']['newsletter_background'];?>
+<?php
+}
+?>
+}
+.breadcrumbs .item strong{
+<?php
+if(isset($d['colors']['breadcrumbs_color']) && $d['colors']['breadcrumbs_color']){
+?>
+color:<?php if (strlen($d['colors']['breadcrumbs_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['breadcrumbs_color'];?>
+<?php
+}
+?>
+}
+
+
+.breadcrumbs .item strong:hover{
+<?php
+if(isset($d['colors']['breadcrumbs_links_hover_color']) && $d['colors']['breadcrumbs_links_hover_color']){
+?>
+color:<?php if (strlen($d['colors']['breadcrumbs_links_hover_color']) == 6): echo "#"; endif; ?><?php echo $d['colors']['breadcrumbs_links_hover_color'];?>
+<?php
+}
+?>
+}
+<?php
+}
+?>

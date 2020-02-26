@@ -1,0 +1,86 @@
+<?php  
+	$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+	$brandproduct = $block->getBrandProducts(); 
+	$productHelper = $this->helper('Magento\Catalog\Helper\Product');
+	$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+	$i = 0;
+	$columcount = 4;
+	$list  = count($brandproduct);
+		echo '<div class="brand_product">';
+		foreach ($brandproduct as $product){
+			$productObject = $objectManager->create('Magento\Catalog\Model\Product'); 
+			$_product = $productObject->load($product->getId());
+			$imgUrl = '';
+			$imgUrl= $productHelper->getSmallImageUrl($_product); 
+			if($i++%$columcount == 0): ?>
+				<ul class="brand_pro_image">
+					<?php endif ?>	
+					<li class="brand_productli <?php echo 'product'.$i; ?>">
+						<div class="brand-outer">
+                        <img src="<?php echo $imgUrl ?>" />
+						<div class="overlay">
+                            <ul>
+						    	<?php $quick_view = $this->helper('\Dotsquares\Quickview\Helper\Data')->getConfig('dotsquares_quickview/general/enable');
+                                if($quick_view == 1):?>
+                                <li>
+							        <a class="quickview_anchor ds_quickview_button" data-quickview-url="<?php echo $block->getUrl('quickview/catalog_product/view', array('id' => $product->getId()));  ?>" href="javascript:void(0);">		<i class="fa fa-search" aria-hidden="true"></i>
+							        </a>
+							    </li>
+							    <?php endif; ?>
+                                <li>
+							    	<a href="#"
+                                        class="action tocompare"
+                                        title="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+                                        aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+                                        data-post='<?php echo $this->helper('\Magento\Catalog\Helper\Product\Compare')->getPostDataParams($product); ?>'
+                                        role="button">
+							    		<i class="fa fa-refresh" aria-hidden="true"></i>
+							    	</a>
+							    </li>
+                                <li>
+							    	<a href="#" 
+							    		   class="action towishlist"
+							    		   title="<?php echo $block->escapeHtml(__('Add to Wishlist')); ?>"
+							    		   aria-label="<?php echo $block->escapeHtml(__('Add to Wishlist')); ?>"
+							    		   data-post='<?php echo $this->helper('\Magento\Wishlist\Helper\Data')->getAddParams($product); ?>'
+							    		   data-action="add-to-wishlist"
+							    		   role="button">
+							    		<i class="fa fa-heart-o" aria-hidden="true"></i>
+							    	</a>
+							    </li>
+                            </ul>
+                        </div>
+                        </div>
+                        
+						<a href = "<?php echo $_product->getProductUrl() ?>">
+						    <p><?php echo $_product->getName() ?></p>
+						</a>
+						<div class="price_label">
+							<?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
+							<?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($_product->getPrice(),2),true,false); ?>
+						</div>
+						<div class="actions-primary">
+								<?php if ($_product->isSaleable()): ?>
+									<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+									<?php echo $block->getBlockHtml('formkey')?>
+										<button class="action tocart primary"
+													data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_product) ?>"}}'
+													type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+												<span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+										</button>
+								<?php else: ?>
+									<?php if ($_product->getIsSalable()): ?>
+										<div class="stock available"><span><?php echo __('In stock') ?></span></div>
+									<?php else: ?>
+										<div class="stock unavailable"><span><?php echo __('Out of stock') ?></span></div>
+									<?php endif; ?>
+								<?php endif; ?>
+						</div>
+                        
+					</li>
+					<?php if ($i%$columcount==0 || $i==$list): ?>
+				</ul>
+				<?php endif; 
+		
+		}
+	echo '</div>'; ?>

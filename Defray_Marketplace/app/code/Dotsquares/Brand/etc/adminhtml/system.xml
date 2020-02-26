@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dotsquares" translate="label" sortOrder="40">
+            <label><![CDATA[Defray Themes]]></label>
+        </tab>
+		<section id="brand" translate="label" type="text" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Brand</label>
+            <tab>dotsquares</tab>
+            <resource>Dotsquares_Brand::config_brand</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable_frontend" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable frontend</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="homepage_brand" translate="label comment" type="select" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Brand slider on Homepage</label>
+					<depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                    <comment>Display Brand Slider on Homepage</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>				
+				<field id="menu_brand" translate="label comment" type="select" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Brand In Top Menu</label>
+					<depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                    <comment>Display Brand In Top Menu</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				<field id="brands_label" translate="label comment" type="text" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter brands label</label>
+					<depends>
+                        <field id="menu_brand">1</field>
+                    </depends>
+                    <comment>Please enter bands label which dispaly in menu</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+

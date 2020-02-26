@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dotsquares" translate="label" sortOrder="40">
+            <label><![CDATA[Defray Themes]]></label>
+        </tab>
+		<section id="banner_settings" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Banner Settings</label>
+            <tab>dotsquares</tab>
+            <resource>Dotsquares_Marketplace::config_marketplace</resource>
+            <group id="enable" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_slider" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider Enable/Disable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

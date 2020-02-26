@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Dotsquares Team
+ * @copyright Copyright (c) 2015 Dotsquares (http://www.dotsquares.com)
+ * @package Dotsquares_Quickview
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\View\Result\Page">
+        <plugin name="dotsquares_quickview_resultpage" type="Dotsquares\Quickview\Plugin\ResultPage" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="dotsquares_quickview_block_product_view" type="Dotsquares\Quickview\Plugin\BlockProductView" sortOrder="1"/>
+    </type>
+    <!-- <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="dotsquares_quickview_block_product_list" type="Dotsquares\Quickview\Plugin\BlockProductList" sortOrder="10"/>
+    </type> -->
+</config>

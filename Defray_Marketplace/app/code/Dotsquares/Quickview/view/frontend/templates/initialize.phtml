@@ -1,0 +1,14 @@
+<script>
+    requirejs(['jquery', 'dotsquaresQuickview' ],
+        function($, quickview) {
+            $(document).ready(function() {
+                $('.quickview_anchor').bind('click', function() {
+                    var prodUrl = $(this).attr('data-quickview-url');
+                    var updateCartUrl = '<?php echo $block->getUpdateCartUrl(); ?>';
+                    if (prodUrl.length) {
+                        quickview.displayContent(prodUrl, updateCartUrl);
+                    }
+                });
+            });
+        });
+</script>

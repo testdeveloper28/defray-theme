@@ -1,0 +1,65 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+ $brands_enable = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('brand/general/enable_frontend');
+ $brands_menu = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('brand/general/menu_brand');
+ $brands_label = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('brand/general/brands_label');
+ $blog_enable = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('blog/general/enable_frontend');
+ $blog_menu = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('blog/general/menu_blog');
+ $blog_label = $this->helper('\Dotsquares\Marketplace\Helper\Data')->getConfig('blog/general/blog_label');
+ 
+ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+ $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+ $base_url = $storeManager->getStore()->getBaseUrl();
+ $media_url = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+ $brandsCollection = $objectManager->create('\Dotsquares\Brand\Model\Brands')->getCollection();
+ $count = $brandsCollection->getsize(); ?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @escapeNotVerified */ $_menu ?>
+        <?= /* @escapeNotVerified */ $block->getChildHtml(); ?>
+		<?php if(($brands_enable == 1) && ($brands_menu == 1)): ?>
+		    <li class="level0 nav-6 last level-top ui-menu-item shop_brands menu_brands">
+		    	<a class="menu_brands_link" href="#">
+					<?php echo $brands_label; ?>
+				</a>
+				<?php if($count > 0): ?>
+				    <ul class="brands_submenu level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all">
+				    	<?php foreach($brandsCollection as $brand): 
+							$image = $brand->getFilename(); 
+	                        $link = $brand->getOptionlabel(); 
+	                        $str = strtolower($link); ?>
+		                    <li class="item">
+		                        <a href = "<?php echo $base_url.'brand/'.$str; ?>">
+		                    		<img width="150px" src = "<?php echo $media_url.$image; ?> ">
+		                        </a>
+		                    </li>
+						<?php endforeach; ?>
+				    </ul>
+				<?php endif; ?>
+		    </li>
+		<?php endif; ?>
+		<?php if(($blog_enable == 1) && ($blog_menu == 1)): ?>
+		    <li class="level0 nav-6 last level-top ui-menu-item shop_brands shop_blog">
+		    	<a href="<?php echo $base_url.'blog';?>">
+					<?php echo $blog_label; ?>
+				</a>
+		    </li>
+		<?php endif; ?>
+    </ul>
+</nav>

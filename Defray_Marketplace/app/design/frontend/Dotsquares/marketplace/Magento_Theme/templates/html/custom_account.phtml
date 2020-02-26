@@ -1,0 +1,31 @@
+<?php $customerSession = $block->customerLogin();?>
+<div class="outer_account">
+ <ul class="user-area">    
+  <li class="account_custom"><a href="<?php echo $this->getUrl('customer/account');?>" class="top-link-myaccount">Account</a></li>
+  <?php if($customerSession) { ?>
+   <li class="top-right logout my_account showhidelog">
+    <a href="<?php echo $this->getUrl('customer/account/logout');?>" ><?= __('Sign Out') ?></a>
+   </li>
+  <?php } else { ?>
+   <li class="top-right my_account showhidelog">
+    <a href="<?php echo $this->getUrl('customer/account/login');?>" ><span class="icon-login">Sign In</span></a>
+   </li>
+  <?php } ?>
+ </ul>
+</div>      
+
+<script type="text/javascript">
+require([
+    "jquery"
+], function($){
+    $(document).ready(function() {
+  $(".showhidelog").hide();
+  $(".outer_account").mouseover(function(){
+   $(".showhidelog").show();
+  });
+  $(".outer_account").mouseout(function(){
+   $(".showhidelog").hide();
+  });
+    });
+});
+</script>

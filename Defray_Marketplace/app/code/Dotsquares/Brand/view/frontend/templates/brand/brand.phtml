@@ -1,0 +1,66 @@
+<?php 
+//brand/general/enable_frontend
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$enable_frontend = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('brand/general/enable_frontend');
+if($enable_frontend == 1):
+    $brands_logos = $block->getBrandcollection();
+    $count = $brands_logos->getSize();
+    $mediaUrl = $block->getImageMediaPath();
+    if($count> 0): ?>
+    <div class="brands-container">
+    	<h2 class="main-heading">
+    		<?php echo "<span>Shop By <i>Brand</i></span>"; ?>
+    	</h2>
+    	<ul id="brand_slider" class="owl-carousel owl-theme owl-loaded owl-drag">
+            <?php foreach($brands_logos as $brand){
+    	        $image = $brand->getFilename(); 
+    	        $link = $brand->getOptionlabel(); 
+    	        $str = strtolower($link); ?>
+    		    <li class="item">
+    		        <a href = "<?php echo 'brand/'.$str; ?>">
+    		    		<img width="200px" src = "<?php echo $mediaUrl.$image; ?> ">
+    		        </a>
+    		    </li>
+    	    <?php } ?>
+    	</ul>
+    </div>	
+    <script>
+    require([
+            'jquery',
+            'dotsquares/marketplace',
+        ], function ($) {
+            $("#brand_slider").owlCarousel({
+    			loop:true,
+                margin:10,
+    			nav: true,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:true
+                    },
+    				400:{
+                        items:2,
+                        nav:true
+                    },
+                    600:{
+                        items:3,
+                        nav:true
+                    },
+                    768:{
+                        items:4,
+                        nav:true
+                    },
+                    1000:{
+                        items:6,
+                        nav:true,
+                        loop:false
+                    }
+                }
+            });
+    		$( ".owl-prev").html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+            $( ".owl-next").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+        });
+    </script>
+<?php endif;
+endif; ?>

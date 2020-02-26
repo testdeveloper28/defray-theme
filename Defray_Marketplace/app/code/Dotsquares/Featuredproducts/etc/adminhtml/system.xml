@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="dotsquares" translate="label" sortOrder="13">
+            <label>Dotsquares Extension</label>  
+        </tab>
+        <section id="featuredproducts" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Featured Products</label>
+            <tab>dotsquares</tab>
+			<resource>Dotsquares_Featuredproducts::Dotsquares_featuredproducts</resource>
+            <group id="general" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Featured Products Options</label>
+				<field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable/Disable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>
+						Display Product's home page or not.
+					</comment>
+                </field>
+			</group>
+		</section>
+    </system>
+</config>

@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+    <body>
+	    <referenceBlock name="advanced-search-link" remove="true"/>
+	    <referenceBlock name="top.search" remove="true"/>
+		<referenceBlock name="catalog.compare.link" remove="true" />
+		<referenceBlock name="register-link" remove="true" />
+		<referenceBlock name="my-account-link" remove="true" />
+		<referenceBlock name="authorization-link" remove="true" />
+		<referenceBlock name="footer_links" remove="true" />
+		<referenceBlock name="report.bugs" remove="true" />
+		
+		<move element="wish-list-link" destination="custom-content" before="minicart" />
+	    <move element="minicart" destination="custom-content" after="header_custom_account" />
+	    <move element="report.bugs" destination="footer-bottom-last" after="copyright" />
+		
+        <referenceContainer name="head.additional">
+            <block class="Dotsquares\Marketplace\Block\Template" name="custom_head" template="Magento_Theme::html/head.phtml" before="-"/>
+        </referenceContainer>
+		
+		<move element="welcome.social" destination="header.panel" after="store.settings.language"/>
+		<container name="welcome.social" htmlClass="welcome_social" htmlTag="div">
+			<block class="Dotsquares\Marketplace\Block\Template" name="header_socail_icon" template="Magento_Theme::html/social.phtml" after="header.panel.wrapper" />
+			<block class="Magento\Theme\Block\Html\Header" name="header" as="header" before="-">
+                <arguments>
+                    <argument name="show_part" xsi:type="string">welcome</argument>
+                </arguments>
+            </block>
+		</container>
+		
+        <!-- <referenceContainer name="header.panel">
+		    <block class="Dotsquares\Marketplace\Block\Template" name="header_socail_icon" template="Magento_Theme::html/social.phtml" after="currency" />
+        </referenceContainer> -->
+		<referenceContainer name="header-wrapper">
+            <block class="Dotsquares\Marketplace\Block\Search" name="header_custom_search" template="Magento_Theme::html/custom_search.phtml" after="logo"/>
+			<container name="custom-content" as="custom-content" label="page header custom" htmlTag="div" htmlClass="custom-mincart-content">
+                <block class="Dotsquares\Marketplace\Block\Template" name="header_custom_account" template="Magento_Theme::html/custom_account.phtml" before="-"/>
+            </container>
+		</referenceContainer>
+		<referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="minicart.autoopen" template="Magento_Catalog::product/view/minicart_open.phtml"/>
+        </referenceContainer>
+		<referenceContainer name="footer-container">
+            <container name="footer-top" label="Page Footer Top" htmlTag="div" htmlClass="footer-top-content">
+                <container name="footer-contact" label="Footer Contact" htmlTag="div" htmlClass="theme_footer footer-first">
+                    <block class="Magento\Cms\Block\Block" name="footer_contact">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_contact</argument>
+                        </arguments>
+                    </block>
+				</container>
+				<container name="footer-customer" label="Footer Customer" htmlTag="div" htmlClass="theme_footer footer-second">
+                    <block class="Magento\Cms\Block\Block" name="footer_customer">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_customer</argument>
+                        </arguments>
+                    </block>
+				</container>
+				<container name="footer-information" label="Footer Information" htmlTag="div" htmlClass="theme_footer footer-third">
+                    <block class="Magento\Cms\Block\Block" name="footer_information">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_information</argument>
+                        </arguments>
+                    </block>
+				</container>
+				<container name="footer-social" label="Footer Social" htmlTag="div" htmlClass="theme_footer footer-fourth">
+                    <block class="Magento\Cms\Block\Block" name="footer_socail">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_social</argument>
+                        </arguments>
+                    </block>
+				</container>
+            </container>
+            <container name="footer-bottom" as="footer_bottom" label="Page Footer Bottom" htmlTag="div" htmlClass="footer-bottom-content" after="footer-top">
+                <container name="footer-cart-bottom" label="Page Footer Bottom" htmlTag="div" htmlClass="footer-bottom-middle">
+                    <container name="footer-bottom-last" label="Footer Bottom" htmlTag="div" htmlClass="footer_bottom_last">
+                        <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="html/copyright.phtml"/>
+			    	</container>
+			    	<container name="footer-bottom-cart" label="Footer Cart" htmlTag="div" htmlClass="footer_bottom_cart">
+			    		<block class="Magento\Cms\Block\Block" name="footer-cart-logo">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">footer-cart-logo</argument>
+                            </arguments>
+                        </block>
+			    	</container>
+                </container>
+            </container>
+        </referenceContainer>
+		
+    </body>
+</page>

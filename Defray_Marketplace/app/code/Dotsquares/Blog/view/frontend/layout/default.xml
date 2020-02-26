@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<!-- <referenceBlock name="top.links">
+			<block class="Magento\Framework\View\Element\Html\Link\Current" name="blog.links" ifconfig="blog/general/enable_frontend">
+				<arguments>
+					<argument name="label" xsi:type="string" translate="true">Blog</argument>
+					<argument name="path" xsi:type="string">blog</argument>
+				</arguments>
+			</block>
+		</referenceBlock> -->
+		<referenceContainer name="sidebar.additional">
+            <block class="Dotsquares\Blog\Block\Blog" ifconfig="blog/general/enable_sidebar" name="blog.sidebar.custom"  template="Dotsquares_Blog::blog/sider.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

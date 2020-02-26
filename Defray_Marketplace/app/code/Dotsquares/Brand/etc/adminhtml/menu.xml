@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Dotsquares_Brand::dotsquares_brand" title="
+		Brand" module="Dotsquares_Brand" sortOrder="40" parent="Dotsquares_Marketplace::dotsquares_marketplace" resource="Dotsquares_Brand::dotsquares_brand"/>
+		<add id="Dotsquares_Brand::dotsquares_brandview" title="Brands" module="Dotsquares_Brand" sortOrder="50" parent="Dotsquares_Brand::dotsquares_brand" action="brand/items" resource="Dotsquares_Brand::dotsquares_brandview"/>
+		<add id="Dotsquares_Brand::dotsquares_blogsetting" title="Setting" module="Dotsquares_Brand" sortOrder="60" parent="Dotsquares_Brand::dotsquares_brand" action="adminhtml/system_config/edit/section/brand" resource="Dotsquares_Brand::dotsquares_brandsetting"/>
+    </menu>
+</config>
