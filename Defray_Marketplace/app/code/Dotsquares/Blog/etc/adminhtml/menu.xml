@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-		<add id="Dotsquares_Blog::dotsquares_blog" title="
-		Blog" module="Dotsquares_Homepageslider" sortOrder="40" parent="Dotsquares_Marketplace::dotsquares_marketplace" resource="Dotsquares_Blog::dotsquares_blog"/>
-		<add id="Dotsquares_Blog::dotsquares_blogview" title="Blog listing" module="Dotsquares_Blog" sortOrder="50" parent="Dotsquares_Blog::dotsquares_blog" action="blog/index" resource="Dotsquares_Blog::dotsquares_blogview"/>
-		<add id="Dotsquares_Blog::dotsquares_blogsetting" title="Blog Setting" module="Dotsquares_Blog" sortOrder="60" parent="Dotsquares_Blog::dotsquares_blog" action="adminhtml/system_config/edit/section/blog" resource="Dotsquares_Blog::dotsquares_blogsetting"/>
-    </menu>
-</config>

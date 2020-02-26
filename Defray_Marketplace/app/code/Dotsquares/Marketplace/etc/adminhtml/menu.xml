@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
-    <menu>
-        <add id="Dotsquares_Marketplace::dotsquares_marketplace" title="Defray" module="Dotsquares_Marketplace" sortOrder="10" resource="Dotsquares_Marketplace::all"/>
-        <add id="Dotsquares_Marketplace::theme_design" title="Design Panel" module="Dotsquares_Marketplace" sortOrder="10" parent="Dotsquares_Marketplace::dotsquares_marketplace" action="adminhtml/system_config/edit/section/marketplace" resource="Dotsquares_Marketplace::theme_settings"/>
-        <add id="Dotsquares_Marketplace::theme_settings" title="Theme Setting" module="Dotsquares_Marketplace" sortOrder="20" parent="Dotsquares_Marketplace::dotsquares_marketplace" action="adminhtml/system_config/edit/section/marketplace_settings" resource="Dotsquares_Marketplace::theme_settings"/>
-    </menu>
-</config>

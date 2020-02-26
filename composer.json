@@ -1,0 +1,18 @@
+{
+    "name": "dotsquares/featuredproducts",
+    "description": "Featuredproducts",
+    "keywords": [
+        "dotsquares",
+        "featuredproducts",
+        "slider"
+    ],
+    "type": "magento2-module",
+    "version": "1.3.0",
+    "license": "MIT",
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Dotsquares\\Featuredproducts\\": ""
+        }
+    }
+}
